@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서정남 포트폴리오</title>
+    <script src="js/jquery-1.12.0.min.js"></script>
+    <style>
+        /* --- 사용자님의 원본 CSS 코드 시작 --- */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        #wrapper{
+            width: 600%;
+            height: 100%;
+            position: relative;
+        }
+        #wrapper section{
+            position: relative;
+            float: left;
+        }
+        #wrapper #home{
+            width: 16.666%;
+            height: 100%;
+            position: relative;
+            background: url(IMG/backdrop1-1.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        #wrapper #product{
+            width: 16.666%;
+            height: 100%;
+            position: relative;
+            background: url(IMG/backdrop1-2.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .product {
+            width: 850px;
+            height:120px;
+            position: absolute;
+            bottom: 33px;
+            left: 50%;
+            margin-left: -350px;
+        }
+        .product ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+        .product li{
+            width: 300px;
+            height: 100%;
+            float: left;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            opacity: 1;
+            margin: 20px 5px 0;
+            background: white;
+            border-radius: 7px;
+            border: 5px solid rgba(250, 216, 153, 1);
+        }
+        .product li:hover,.product li.active{
+            border: 5px solid #E0b27d;
+        }
+        .product li img {
+            width: 100%;
+            height: auto;
+            border-radius: 7px;
+        }
+        .product-gallery {
+            width: 1200px;
+            margin: 40px auto 0 auto;
+            display: none;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            top: 100px;
+            overflow-y: scroll;
+        }
+        .product-gallery img {
+            width: 300px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .product-gallery img:hover {
+            transform: scale(1.05);
+        }
+        #wrapper #interior{
+            width: 16.666%;
+            height: 100%;
+            position: relative;
+            background: url(IMG/backdrop1-3.png) no-repeat;
+            background-size: 100% 100%;
+            display: flex; /* 내부 아이템 정렬을 위해 flex 추가 */
+            justify-content: center; /* 수평 중앙 정렬 */
+            align-items: center; /* 수직 중앙 정렬 */
+        }
+        /* 인테리어 페이지 내 유튜브 아이콘 스타일 */
+        .youtube-icon {
+            width: 600px; /* 아이콘 너비 */
+            height: 300px; /* 아이콘 높이 */
+            cursor: pointer;
+            margin: 20px; /* 아이콘 간 간격 */
+            background-size: contain; /* 배경 이미지를 요소에 맞게 조정 */
+            background-repeat: no-repeat; /* 배경 이미지 반복 없음 */
+            background-position: center; /* 배경 이미지 중앙 정렬 */
+            transition: transform 0.2s;
+
+        }
+
+        .youtube-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .youtube-icon.vid1 {
+            background-image: url(img/goyang.png); /* 첫 번째 YouTube 아이콘 이미지 경로 */
+        }
+        .youtube-icon.vid2 {
+            background-image: url(img/goangmuyng.png); /* 두 번째 YouTube 아이콘 이미지 경로 */
+        }
+        .youtube-icon.vid3 {
+            background-image: url(img/busan.png); /* 두 번째 YouTube 아이콘 이미지 경로 */
+        }
+        .youtube-icon.vid4 {
+            background-image: url(img/giheung.png); /* 두 번째 YouTube 아이콘 이미지 경로 */
+        }
+        /* --- 사용자님의 원본 CSS 코드 끝 --- */
+
+        #wrapper #service{
+            width: 16.666%;
+            height: 100%;
+            position: relative;
+            background: url(IMG/backdrop1-4.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        #wrapper #store{
+            width: 16.666%;
+            height: 100%;
+            position: relative;
+            background: url(IMG/backdrop1-5.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        #wrapper #introduce{
+            width: 16.666%;
+            height: 100%;
+            position: relative;
+            background: url(IMG/backdrop6.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        nav{
+            float: left;
+        }
+        #gnb1{
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            left: 50%;
+            margin-left: -600px;
+            z-index: 9999;
+        }
+        #gnb1 a{
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: -9999;
+            position: relative;
+        }
+        #gnb2{
+            width: 750px;
+            height: 150px;
+            position: fixed;
+            left: 50%;
+            margin-left: -375px;
+            z-index: 9999;
+            top: -30px;
+        }
+        #gnb2 ul{
+            width: 100%;
+            height: 100%;
+            list-style: none;
+        }
+        #gnb2 li{
+            width: 20%;
+            height: 100%;
+            position: relative;
+            float: left;
+            box-sizing: border-box;
+        }
+        #gnb2 li a{
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-indent: -9999px;
+        }
+        #gnb2 li:nth-child(1) a{
+            width: 100%;
+            height: 100%;
+            background: url(img/product1.png);
+        }
+        #gnb2 li:nth-child(1) a:hover {
+            background: url(img/product1.png) no-repeat;
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            animation: ani1 1s steps(5) 1;
+        }
+        @keyframes ani1{
+            from{background-position: 0 0;}
+            to{background-position: -751px 0;}
+        }
+        #gnb2 li:nth-child(2) a{
+            width: 100%;
+            height: 100%;
+            background: url(img/interior1.png);
+        }
+        #gnb2 li:nth-child(2) a:hover {
+            background: url(img/interior1.png) no-repeat;
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            animation: ani2 1s steps(5) 1;
+        }
+        @keyframes ani2{
+            from{background-position: 0 0;}
+            to{background-position: -751px 0;}
+        }
+        #gnb2 li:nth-child(3) a{
+            width: 100%;
+            height: 100%;
+            background: url(img/service1.png);
+        }
+        #gnb2 li:nth-child(3) a:hover {
+            background: url(img/service1.png) no-repeat;
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            animation: ani3 1s steps(5) 1;
+        }
+        @keyframes ani3{
+            from{background-position: 0 0;}
+            to{background-position: -751px 0;}
+        }
+        #gnb2 li:nth-child(4) a{
+            width: 100%;
+            height: 100%;
+            background: url(img/guide1-01.png);
+        }
+        #gnb2 li:nth-child(4) a:hover {
+            background: url(img/guide1-01.png) no-repeat;
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            animation: ani4 1s steps(5) 1;
+        }
+        @keyframes ani4{
+            from{background-position: 0 0;}
+            to{background-position: -751px 0;}
+        }
+        #gnb2 li:nth-child(5) a{
+            width: 100%;
+            height: 100%;
+            background: url(img/introduction1.png);
+        }
+        #gnb2 li:nth-child(5) a:hover {
+            background: url(img/introduction1.png) no-repeat;
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            animation: ani5 1s steps(5) 1;
+        }
+        @keyframes ani5{
+            from{background-position: 0 0;}
+            to{background-position: -751px 0;}
+        }
+        .carousel {
+            position: relative;
+            width: 1320px; /* 300px * 3 */
+            left: 50%;
+            margin-left: -680px;
+            top: 20%;
+        }
+
+        .carousel-window {
+            overflow: hidden;
+            width: 1320px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            width: 440px;
+            height: 700px;
+            object-fit: cover;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .prev { left: -50px; }
+        .next { right: -50px; }
+
+        /* --- 기존 이미지 모달 스타일 --- */
+        .modal {
+            display: none; /* 기본적으로 숨김 */
+            position: fixed; /* 고정 위치 */
+            z-index: 10001; /* 다른 요소들 위에 표시 */
+            left: 0;
+            top: 0;
+            width: 100%; /* 전체 너비 */
+            height: 100%; /* 전체 높이 */
+            overflow: auto; /* 내용이 넘칠 경우 스크롤 허용 */
+            background-color: rgba(0,0,0,0.8); /* 반투명 검정 배경 */
+            justify-content: center; /* 수평 중앙 정렬 */
+            align-items: center; /* 수직 중앙 정렬 */
+            animation: fadeIn 0.3s forwards; /* 부드러운 나타나기 애니메이션 */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* 모달 내용의 최대 너비 */
+            max-width: 900px; /* 최대 너비 제한 */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            animation: slideIn 0.3s forwards; /* 부드러운 슬라이드인 애니메이션 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .modal-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+            text-align: center;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 모달 나타나기/사라지기 애니메이션 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- YouTube 모달 추가 CSS --- */
+        #youtubeModal .modal-content {
+            padding: 0; /* YouTube iframe 주변 패딩 제거 */
+            border: none; /* 테두리 제거 */
+            background-color: transparent; /* 배경 투명하게 */
+            box-shadow: none; /* 그림자 제거 */
+        }
+
+        #youtubeModal iframe {
+            width: 90vw; /* 뷰포트 너비의 90% */
+            height: 50.625vw; /* 16:9 비율 유지 (너비의 9/16) */
+            max-width: 960px; /* 최대 너비 제한 */
+            max-height: 540px; /* 최대 높이 제한 */
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+        }
+        #service .service1{
+            width: 410px;
+            height: 410px;
+            background: url(img/home_styling.png) no-repeat;
+            position: relative;
+            z-index: 9999;
+            float: left;
+            left: 0;
+            cursor: pointer;
+        }
+        #service .service2{
+            width: 410px;
+            height: 410px;
+            background: url(img/business_styling.png) no-repeat;
+            position: relative;
+            z-index: 9999;
+            float: left;
+            right: 0;
+            cursor: pointer;
+        }
+        #service .svcimg1{
+            width: 1000px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            margin-top: -300px;
+            left: 50%;
+            margin-left: -450px;
+        }
+        #service .svcimg2{
+            width: 1200px;
+            height: 300px;
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            margin-left: -600px;
+            overflow: hidden;
+        }
+        .svcimg2 div:nth-child(1){
+            width: 200px;
+            height: 200px;
+            position: relative;
+            z-index: 9999;
+            float: left;
+            bottom: 0;
+            background-color: white;
+            border-radius: 30px;
+            margin: 0 30px 0 0;
+        }
+        .svcimg2 div:nth-child(2){
+            width: 200px;
+            height: 200px;
+            position: relative;
+            z-index: 9999;
+            float: left;
+            bottom: 0;
+            background-color: white;
+            border-radius: 30px;
+            margin: 0 30px 0 0;
+        }
+        .svcimg2 div:nth-child(3){
+            width: 200px;
+            height: 200px;
+            position: relative;
+            z-index: 9999;
+            float: left;
+            bottom: 0;
+            background-color: white;
+            border-radius: 30px;
+            margin: 0 30px 0 0;
+        }
+        .svcimg2 div:nth-child(4){
+            width: 200px;
+            height: 200px;
+            position: relative;
+            z-index: 9999;
+            float: left;
+            bottom: 0;
+            background-color: white;
+            border-radius: 30px;
+            margin: 0 30px 0 0;
+        }
+        .svcimg2 div:nth-child(5){
+            width: 200px;
+            height: 200px;
+            position: relative;
+            z-index: 9999;
+            float: left;
+            bottom: 0;
+            background-color: white;
+            border-radius: 30px;
+            margin: 0 30px 0 0;
+        }
+        .svcimg2 div:nth-child(1) p{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 20px;
+            background-color: #000;
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .svcimg2 div:nth-child(1) p:hover{
+            transform: scale(1.2);
+        }.svcimg2 div:nth-child(2) p{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 20px;
+            background-color: #000;
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .svcimg2 div:nth-child(2) p:hover{
+            transform: scale(1.2);
+        }.svcimg2 div:nth-child(3) p{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 20px;
+            background-color: #000;
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .svcimg2 div:nth-child(3) p:hover{
+            transform: scale(1.2);
+        }.svcimg2 div:nth-child(4) p{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 20px;
+            background-color: #000;
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .svcimg2 div:nth-child(4) p:hover{
+            transform: scale(1.2);
+        }
+        .svcimg2 div:nth-child(5) p{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 20px;
+            background-color: #000;
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .svcimg2 div:nth-child(5) p:hover{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <section id="home">
+            <nav id="gnb1"><a href="#home"><img src="img/logo-01.png" alt=""></a></nav>
+            <nav id="gnb2">
+                <ul>
+                    <li><a href="#product">모든제품</a></li>
+                    <li><a href="#interior">공간인테리어</a></li>
+                    <li><a href="#service">서비스</a></li>
+                    <li><a href="#store">안내</a></li>
+                    <li><a href="#introduce">소개</a></li>
+                </ul>
+            </nav>
+            <div class="carousel">
+                <button class="prev">←</button>
+                <div class="carousel-window">
+                    <div class="carousel-track">
+                        <img src="img/carousel1.png" class="carousel-item" data-title="편안한 침실 꾸미기" data-description="최고급 소재로 제작된 침대와 매트리스로 편안한 휴식을 선사합니다. 모던하고 미니멀한 디자인이 돋보입니다." data-image="img/carousel1.png" alt="캐러셀 이미지 1" />
+                        <img src="img/carousel2.png" class="carousel-item" data-title="세련된 거실 인테리어" data-description="다양한 색상과 디자인의 소파와 암체어로 당신의 거실을 더욱 세련되게 연출해보세요." data-image="img/carousel2.png" alt="캐러셀 이미지 2" />
+                        <img src="img/carousel3.png" class="carousel-item" data-title="효율적인 수납 솔루션" data-description="공간 활용을 극대화하는 실용적인 수납 가구들로 깔끔하고 정돈된 공간을 만들어보세요." data-image="img/carousel3.png" alt="캐러셀 이미지 3" />
+                        <img src="img/carousel4.png" class="carousel-item" data-title="집중력을 높이는 서재" data-description="인체공학적 디자인의 책상과 의자는 학습 및 업무 효율을 높이는 데 기여합니다." data-image="img/carousel4.png" alt="캐러셀 이미지 4" />
+                        <img src="img/carousel5.png" class="carousel-item" data-title="아름다운 홈 데코" data-description="작은 소품 하나로도 공간의 분위기를 바꿀 수 있습니다. 다양한 홈 데코 아이템을 만나보세요." data-image="img/carousel5.png" alt="캐러셀 이미지 5" />
+                    </div>
+                </div>
+                <button class="next">→</button>
+            </div>
+        </section>
+        <section id="product">
+            <nav class="product">
+                <ul>
+                    <li data-product="bed" class="active"><img src="img/bed.png" alt="">침대/매트리스</li>
+                    <li data-product="sofa"><img src="img/sofa.png" alt="">소파 및 암체어</li>
+                    <li data-product="drawer"><img src="img/drawer.png" alt="">수납 가구</li>
+                    <li data-product="desk"><img src="img/desk.png" alt="">책상/책상 의자</li>
+                    <li data-product="decor"><img src="img/decor.png" alt="">홈데코/장식품</li>
+                    <li data-product="lamp"><img src="img/lamp.png" alt="">조명</li>
+                    <li data-product="outdoor"><img src="img/outdoor.png" alt="">아웃도어</li>
+                </ul>
+            </nav>
+            <div class="product-gallery" id="gallery"></div>
+        </section>
+        <section id="interior">
+            <div class="youtube-icon vid1" data-youtube-id="ytTwnfcEw2Q"></div>
+            <div class="youtube-icon vid2" data-youtube-id="qOGgK3nZ8sg"></div>
+            <div class="youtube-icon vid3" data-youtube-id="yymCTGQyWqQ"></div>
+            <div class="youtube-icon vid4" data-youtube-id="n32QAqmjyY4"></div>
+        </section>
+        <section id="service">
+            <div class="svcimg1">
+                <div class="service1"></div>
+                <div class="service2"></div>
+            </div>
+            <div class="svcimg2">
+                <div class="service11">
+                    <br>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객 서비스</span>
+                    <br>
+                    <h2>&nbsp;&nbsp;&nbsp;고객 서비스</h2>
+                    <br><br>
+                    <p>보러가기</p>
+                </div>
+                <div class="service22">
+                    <br>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객 서비스</span>
+                    <br>
+                    <h2>&nbsp;&nbsp;&nbsp;설치 서비스</h2>
+                    <br><br>
+                    <p>보러가기</p>
+                </div>
+                <div class="service33">
+                    <br>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객 서비스</span>
+                    <br>
+                    <h2>&nbsp;&nbsp;&nbsp;조립 서비스</h2>
+                    <br><br>
+                    <p>보러가기</p>
+                </div>
+                <div class="service44">
+                    <br>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객 서비스</span>
+                    <br>
+                    <h2>&nbsp;&nbsp;&nbsp;바이백 서비스</h2>
+                    <br><br>
+                    <p>보러가기</p>
+                </div>
+                <div class="service55">
+                    <br>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객 서비스</span>
+                    <br>
+                    <h2>&nbsp;&nbsp;&nbsp;내림 서비스</h2>
+                    <br><br>
+                    <p>보러가기</p>
+                </div>
+            </div>
+        </section>
+        <section id="store"></section>
+        <section id="introduce"></section>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close-button">×</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="모달 이미지">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <div id="youtubeModal" class="modal">
+        <span class="close-button youtube-close-button">×</span>
+        <div class="modal-content">
+            <iframe id="youtubeIframe" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        // --- 메인 내비게이션 (gnb2) 클릭 시 섹션 이동 (사용자님의 원본 코드 유지) ---
+        const track = document.querySelector('.carousel-track');
+        const next = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+
+        const itemWidth = 440;
+        const visibleCount = 3;
+        const totalItems = 5;
+        const maxIndex = totalItems - visibleCount;
+
+        let index = 0;
+
+        next.addEventListener('click', () => {
+            if (index < maxIndex) {
+                index++;
+                track.style.transform = `translateX(-${index * itemWidth}px)`;
+            }
+        });
+
+        prev.addEventListener('click', () => {
+            if (index > 0) {
+                index--;
+                track.style.transform = `translateX(-${index * itemWidth}px)`;
+            }
+        });
+
+        const gallery = document.getElementById('gallery');
+        const productItems = document.querySelectorAll('.product li');
+
+        // 각 제품에 맞는 이미지 배열
+        const productImages = {
+            bed: [
+                'img/침대1.jpg', 'img/침대2.jpg', 'img/침대3.jpg',
+                'img/침대4.jpg', 'img/침대5.jpg', 'img/침대2.jpg',
+                'img/침대2.jpg', 'img/침대2.jpg', 'img/침대2.jpg'
+            ],
+            sofa: [
+                'img/소파1.jpg', 'img/소파2.jpg', 'img/소파3.jpg',
+                'img/소파4.jpg', 'img/소파5.jpg', 'img/소파5.jpg',
+                'img/소파5.jpg', 'img/소파5.jpg', 'img/소파5.jpg'
+            ],
+            drawer: [
+                'img/서랍장1.jpg', 'img/서랍장2.jpg', 'img/서랍장3.jpg',
+                'img/서랍장4.jpg', 'img/서랍장5.jpg', 'img/서랍장5.jpg',
+                'img/서랍장5.jpg', 'img/서랍장5.jpg', 'img/서랍장5.jpg'
+            ],
+            desk: [
+                'img/책상1.jpg', 'img/책상2.jpg', 'img/책상3.jpg',
+                'img/책상4.jpg', 'img/책상5.jpg', 'img/책상5.jpg',
+                'img/책상5.jpg', 'img/책상5.jpg', 'img/책상5.jpg'
+            ],
+            decor: [
+                'img/장식품1.jpg', 'img/장식품2.jpg', 'img/장식품3.jpg',
+                'img/장식품4.jpg', 'img/장식품5.jpg', 'img/장식품5.jpg',
+                'img/장식품5.jpg', 'img/장식품5.jpg', 'img/장식품5.jpg'
+            ],
+            lamp: [
+                'img/조명1.jpg', 'img/조명2.jpg', 'img/조명3.jpg',
+                'img/조명4.jpg', 'img/조명5.jpg', 'img/조명5.jpg',
+                'img/조명5.jpg', 'img/조명5.jpg', 'img/조명5.jpg'
+            ],
+            outdoor: [
+                'img/아웃1.jpg', 'img/아웃2.jpg', 'img/아웃3.jpg',
+                'img/아웃4.jpg', 'img/아웃5.jpg', 'img/아웃5.jpg',
+                'img/아웃5.jpg', 'img/아웃5.jpg', 'img/아웃5.jpg'
+            ]
+        };
+
+        productItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const productType = item.getAttribute('data-product');
+                const images = productImages[productType];
+
+                gallery.innerHTML = ''; // 이전에 표시된 이미지 지우기
+                gallery.style.display = 'flex';
+
+                // 해당 제품에 맞는 이미지들 추가하기
+                images.forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = `${productType} 제품 이미지`;
+                    gallery.appendChild(img);
+                });
+            });
+        });
+        // li active
+        $(function() {
+            const gallery = $('#gallery');
+            const productItems = $('.product li');
+
+            productItems.on('click', function() {
+                productItems.removeClass('active');
+                $(this).addClass('active');
+
+                const productType = $(this).attr('data-product');
+                loadGallery(productType);
+            });
+
+            // 초기 로드 시 'bed' 카테고리 갤러리 표시
+            loadGallery('bed');
+        });
+
+        // --- 캐러셀 모달 스크립트 ---
+        const carouselItems = $('.carousel-item');
+
+        const imageModal = $('#imageModal');
+        const modalImage = $('#modalImage');
+        const modalTitle = $('#modalTitle');
+        const modalDescription = $('#modalDescription');
+        const closeImageButton = $('#imageModal .close-button');
+
+        carouselItems.on('click', function() {
+            const imgSource = $(this).attr('src');
+            const title = $(this).data('title');
+            const description = $(this).data('description');
+
+            modalImage.attr('src', imgSource);
+            modalTitle.text(title);
+            modalDescription.text(description);
+
+            imageModal.css('display', 'flex');
+            $('body').css('overflow', 'hidden');
+        });
+
+        closeImageButton.on('click', function() {
+            imageModal.css('display', 'none');
+            $('body').css('overflow', 'auto');
+        });
+
+        $(window).on('click', function(event) {
+            if ($(event.target).is(imageModal)) {
+                imageModal.css('display', 'none');
+                $('body').css('overflow', 'auto');
+            }
+        });
+
+        // 제품 갤러리를 로드하는 함수
+        function loadGallery(productType) {
+            const images = productImages[productType];
+            gallery.innerHTML = '';
+            gallery.style.display = 'flex';
+
+            images.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `${productType} 제품 이미지`;
+                gallery.appendChild(img);
+            });
+        }
+
+        // --- YouTube 모달 스크립트 ---
+        const youtubeModal = $('#youtubeModal');
+        const youtubeIframe = $('#youtubeIframe');
+        const closeYoutubeButton = $('#youtubeModal .youtube-close-button');
+
+        $('.youtube-icon').on('click', function() {
+            const youtubeId = $(this).data('youtube-id');
+            // YouTube 임베드 URL 형식: https://www.youtube.com/embed/ytTwnfcEw2Q?si=n2lSrpaxahQ5QOK05{VIDEO_ID}
+            const embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`; // 실제 YouTube 임베드 URL로 변경
+
+            youtubeIframe.attr('src', embedUrl); // 클릭된 아이콘의 ID로 iframe src 설정
+            youtubeModal.css('display', 'flex');
+            $('body').css('overflow', 'hidden');
+        });
+
+        closeYoutubeButton.on('click', function() {
+            youtubeModal.css('display', 'none');
+            youtubeIframe.attr('src', ''); // iframe src를 비워 비디오 재생 중지
+            $('body').css('overflow', 'auto');
+        });
+
+        $(window).on('click', function(event) {
+            if ($(event.target).is(youtubeModal)) {
+                youtubeModal.css('display', 'none');
+                youtubeIframe.attr('src', ''); // iframe src를 비워 비디오 재생 중지
+                $('body').css('overflow', 'auto');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
